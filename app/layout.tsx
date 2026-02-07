@@ -2,10 +2,10 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
-import ReduxProvider from '@/components/redux-provider'
-import LoadUser from '@/components/load-user'
-import { Toaster } from '@/components/ui/toaster'
-import Script from 'next/script';
+import ReduxProvider from "@/components/redux-provider"
+import LoadUser from "@/components/load-user"
+import { Toaster } from "@/components/ui/toaster"
+import Script from "next/script"
 
 export const metadata: Metadata = {
   title: "Samrat Trader - Master Trading Strategies",
@@ -24,6 +24,7 @@ export const metadata: Metadata = {
     images: "/logo.png",
   },
 }
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -33,17 +34,36 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Elms+Sans:ital,wght@0,100..900;1,100..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Elms+Sans:ital,wght@0,100..900;1,100..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+          rel="stylesheet"
+        />
       </head>
-      <body className={`font-sans antialiased`}>
+      <body className="font-sans antialiased">
         <ReduxProvider>
           <LoadUser />
           {children}
         </ReduxProvider>
+
         <Toaster />
         <Analytics />
-        <Script src="https://checkout.razorpay.com/v1/checkout.js" strategy="beforeInteractive" />
+
+        {/* Razorpay */}
+        <Script
+          src="https://checkout.razorpay.com/v1/checkout.js"
+          strategy="beforeInteractive"
+        />
+
+        {/* Noupe Embed */}
+        <Script
+          src="https://www.noupe.com/embed/019c0cec90a8706a9f08036b7488c65556a7.js"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   )

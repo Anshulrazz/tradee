@@ -56,7 +56,7 @@ export default function HeroSection() {
 
   useEffect(() => {
     setMounted(true)
-    const saleEnd = new Date("2026-01-20T23:59:59")
+    const saleEnd = new Date("2026-02-02T23:59:59")
 
     const updateTimer = () => {
       const now = new Date()
